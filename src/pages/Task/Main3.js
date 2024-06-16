@@ -12,11 +12,11 @@ const App = () => {
 
   // List of students
   const students = [
-    'Alice Johnson',
-    'Bob Smith',
-    'Charlie Brown',
-    'David Wilson',
-    'Eva Adams'
+    'Ram',
+    'Raj',
+    'Kumar',
+    'Sam',
+    'Adams'
   ];
 
   // Function to add a new task or update an existing task
