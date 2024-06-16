@@ -11,7 +11,7 @@ import {
   StepLabel,
 } from '@mui/material';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
@@ -53,7 +53,7 @@ const ChapterSection = ({ chapter, index: chapterIndex }) => {
     <Box mt={2} border={1} p={2} borderColor="grey.300">
       <Box display="flex" alignItems="center">
         <IconButton onClick={toggleExpand} size="small">
-          {/* {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />} */}
+          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </IconButton>
         <Typography variant="h6" gutterBottom>
           {chapter.title}
