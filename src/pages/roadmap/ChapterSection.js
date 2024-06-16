@@ -11,9 +11,6 @@ import {
   StepLabel,
 } from '@mui/material';
 
-import ExpandMoreIcon from '@mui/icons-material/AddCircleOutline';
-import ExpandLessIcon from '@mui/icons-material/AddCircleOutline';;
-
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
@@ -27,12 +24,11 @@ const ChapterSection = ({ chapter, index: chapterIndex }) => {
 
   const handleAddSection = () => {
     if (sectionTitle.trim() !== '') {
-      // Create a new array to update state immutably
       const newSections = [...chapter.sections, { title: sectionTitle, startDate: sectionStartDate }];
       chapter.sections = newSections; // Update chapter sections
       setSectionTitle('');
       setSectionStartDate(null); // Reset sectionStartDate after adding section
-      setActiveStep(newSections.length); // Move to the newly added section
+      setActiveStep(0); // Reset to the first step
     }
   };
 
@@ -53,9 +49,9 @@ const ChapterSection = ({ chapter, index: chapterIndex }) => {
 
   return (
     <Box mt={2} border={1} p={2} borderColor="grey.300">
-      <Box display="flex" alignItems="center">
-        <IconButton onClick={toggleExpand} size="small">
-          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+      <Box display="flex" alignItems="center" onClick={toggleExpand} style={{ cursor: 'pointer' }}>
+        <IconButton size="small">
+
         </IconButton>
         <Typography variant="h6" gutterBottom>
           {chapter.title}
@@ -105,15 +101,17 @@ const ChapterSection = ({ chapter, index: chapterIndex }) => {
             <Step key={index}>
               <StepLabel>{section.title}</StepLabel>
               <Box mt={2}>
-                {activeStep !== 0 && index === activeStep - 1 && (
-                  <Button onClick={handleBack} style={{ marginRight: '10px' }}>
-                    Back
-                  </Button>
-                )}
                 {index === activeStep && (
-                  <Button onClick={handleNext} variant="contained" color="primary">
-                    {activeStep === chapter.sections.length ? 'Finish' : 'Continue'}
-                  </Button>
+                  <Box>
+                    {activeStep !== 0 && (
+                      <Button onClick={handleBack} style={{ marginRight: '10px' }}>
+                        Back
+                      </Button>
+                    )}
+                    <Button onClick={handleNext} variant="contained" color="primary">
+                      {activeStep === chapter.sections.length ? 'Finish' : 'Continue'}
+                    </Button>
+                  </Box>
                 )}
               </Box>
             </Step>
