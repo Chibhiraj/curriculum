@@ -10,8 +10,10 @@ import {
   Step,
   StepLabel,
 } from '@mui/material';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
+import ExpandMoreIcon from '@mui/icons-material/AddCircleOutline';
+import ExpandLessIcon from '@mui/icons-material/AddCircleOutline';;
+
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
