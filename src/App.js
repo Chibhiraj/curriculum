@@ -45,25 +45,25 @@ function App() {
               <ListItemIcon>
                 {/* <HomeIcon /> */}
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Home" sx={{color:'teal'}} />
             </ListItem>
             <ListItem button component={Link} to="/performance" onClick={handleDrawerClose}>
               <ListItemIcon>
                 {/* <HomeIcon /> */}
               </ListItemIcon>
-              <ListItemText primary="Performance" />
+              <ListItemText primary="Performance" sx={{color:'teal'}} />
             </ListItem>
             <ListItem button component={Link} to="/roadmap" onClick={handleDrawerClose}>
               <ListItemIcon>
                 {/* <TimelineIcon /> */}
               </ListItemIcon>
-              <ListItemText primary="Roadmap" />
+              <ListItemText primary="Roadmap" sx={{color:'teal'}} />
             </ListItem>
             <ListItem button component={Link} to="/task" onClick={handleDrawerClose}>
               <ListItemIcon>
                 {/* <AssignmentIcon /> */}
               </ListItemIcon>
-              <ListItemText primary="Task" />
+              <ListItemText primary="Task" sx={{color:'teal'}} />
             </ListItem>
           </List>
         </Drawer>
