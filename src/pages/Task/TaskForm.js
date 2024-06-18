@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Box, Checkbox, FormControlLabel, Snackbar, Alert } from '@mui/material';
+import { TextField, Button, Box, Checkbox, FormControlLabel, Snackbar, Alert, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 
 const TaskForm = ({ addTask, students, closeForm, initialTask, isEdit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [selectedStudents, setSelectedStudents] = useState([]);
+  const [status, setStatus] = useState('incomplete');
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const TaskForm = ({ addTask, students, closeForm, initialTask, isEdit }) => {
       setDescription(initialTask.description || '');
       setDueDate(initialTask.dueDate || '');
       setSelectedStudents(initialTask.students || []);
+      setStatus(initialTask.status || 'incomplete');
     }
   }, [isEdit, initialTask]);
 
@@ -28,11 +30,12 @@ const TaskForm = ({ addTask, students, closeForm, initialTask, isEdit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask({ title, description, dueDate, students: selectedStudents });
+    addTask({ title, description, dueDate, students: selectedStudents, status });
     setTitle('');
     setDescription('');
     setDueDate('');
     setSelectedStudents([]);
+    setStatus('incomplete');
     setOpenSnackbar(true);
     closeForm();
   };
@@ -79,7 +82,19 @@ const TaskForm = ({ addTask, students, closeForm, initialTask, isEdit }) => {
           />
         </div>
         <div>
-          <label>Assign to Students:</label>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Status</InputLabel>
+            <Select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <MenuItem value="complete">Complete</MenuItem>
+              <MenuItem value="incomplete">Incomplete</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div>
+          <label>Assign to Students: <div></div></label>
           {students.map((student, index) => (
             <FormControlLabel
               key={index}
@@ -106,7 +121,7 @@ const TaskForm = ({ addTask, students, closeForm, initialTask, isEdit }) => {
         onClose={handleCloseSnackbar}
       >
         <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          {isEdit ? 'Task/Test updated successfully!' : 'Task/Test added successfully!'}
+          Task/Test added successfully!
         </Alert>
       </Snackbar>
     </div>

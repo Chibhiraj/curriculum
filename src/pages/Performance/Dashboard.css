@@ -1,24 +1,60 @@
 /* src/Dashboard.css */
+
 .dashboard {
-  padding: 20px;
+  padding: 16px;
+}
+body{
+  background-image: url('./vivid-blurred-colorful-wallpaper-background.jpg');
+  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0; /* Remove default body margin */
+    height: 100vh; /* Ensure the body fills the viewport height */
+  
+    
 }
 
-.section {
-  margin-bottom: 40px;
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 8px;
+  }
+
+  .MuiTypography-h2 {
+    font-size: 1.5rem;
+  }
+
+  .MuiPaper-root {
+    padding: 8px;
+  }
+
+  .MuiAppBar-root {
+    padding: 0;
+  }
+
+  .MuiButton-root {
+    font-size: 0.75rem;
+  }
+
+  .MuiBadge-root {
+    font-size: 0.75rem;
+  }
+
+  .MuiGrid-container {
+    justify-content: space-between;
+  }
 }
 
-h1, h2 {
-  text-align: center;
-}
+@media (min-width: 600px) and (max-width: 960px) {
+  .dashboard {
+    padding: 12px;
+  }
 
-.notifications ul {
-  list-style-type: none;
-  padding: 0;
-}
+  .MuiTypography-h2 {
+    font-size: 2rem;
+  }
 
-.notifications li {
-  background: #f9f9f9;
-  margin: 5px 0;
-  padding: 10px;
-  border: 1px solid #ddd;
+  .MuiPaper-root {
+    padding: 12px;
+  }
 }
